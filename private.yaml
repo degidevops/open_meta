@@ -210,7 +210,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 120
+      interval: 180
   ACCVLESS:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/vless.yaml
@@ -219,7 +219,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 120
+      interval: 180
   ACCTROJAN:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/trojan.yaml
@@ -228,7 +228,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 120
+      interval: 180
   ACCTROJAN-G:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/trojan-game.yaml
@@ -237,7 +237,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 600
+      interval: 180
   ACCVLESS-G:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/vless-game.yaml
@@ -246,7 +246,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 600
+      interval: 180
   ACCVMESS-G:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/vmess-game.yaml
@@ -255,7 +255,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 600
+      interval: 180
 proxy-groups:
   - name: LB-1
     type: load-balance
@@ -265,7 +265,7 @@ proxy-groups:
       - ACCVLESS
       - ACCVMESS
     url: http://www.gstatic.com/generate_204
-    interval: 240
+    interval: 180
     disable-udp: false
   - name: Route GAME
     type: url-test
@@ -316,7 +316,7 @@ proxy-groups:
       - LB-1
       #- DIRECT
     url: http://www.gstatic.com/generate_204
-    interval: 120
+    interval: 180
 rules:
   - DST-PORT,22,TrafficDirect
   - GEOIP,private,DIRECT,no-resolve
