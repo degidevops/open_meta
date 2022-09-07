@@ -20,9 +20,9 @@ secret: ""
 interface-name: ""
 profile:
   store-selected: true
-  store-fake-ip: false
+  store-fake-ip: true
 sniffer:
-  enable: true
+  enable: false
   sniffing:
     - tls
     - http
@@ -211,6 +211,7 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 180
+      timeout: 1
   ACCVLESS:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/vless.yaml
@@ -220,6 +221,7 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 180
+      timeout: 1
   ACCTROJAN:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/trojan.yaml
@@ -229,6 +231,7 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 180
+      timeout: 1
   ACCTROJAN-G:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/trojan-game.yaml
@@ -238,6 +241,7 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 180
+      timeout: 1
   ACCVLESS-G:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/vless-game.yaml
@@ -247,6 +251,7 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 180
+      timeout: 1
   ACCVMESS-G:
     type: http
     url: https://raw.githubusercontent.com/degidevops/clash-account/main/vmess-game.yaml
@@ -256,6 +261,7 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 180
+      timeout: 1
 proxy-groups:
   - name: LB-1
     type: load-balance
@@ -265,7 +271,7 @@ proxy-groups:
       - ACCVLESS
       - ACCVMESS
     url: http://www.gstatic.com/generate_204
-    interval: 180
+    interval: 360
     disable-udp: false
   - name: Route GAME
     type: url-test
@@ -275,6 +281,7 @@ proxy-groups:
       - ACCVMESS-G
     url: http://www.gstatic.com/generate_204
     interval: 600
+    tolerance: 100
     disable-udp: false
   - name: TrafficDirect
     type: select
@@ -316,7 +323,7 @@ proxy-groups:
       - LB-1
       #- DIRECT
     url: http://www.gstatic.com/generate_204
-    interval: 180
+    interval: 360
 rules:
   - DST-PORT,22,TrafficDirect
   - GEOIP,private,DIRECT,no-resolve
