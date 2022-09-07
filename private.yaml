@@ -281,7 +281,7 @@ proxy-groups:
       - ACCVMESS-G
     url: http://www.gstatic.com/generate_204
     interval: 600
-    tolerance: 100
+    tolerance: 50
     disable-udp: false
   - name: TrafficDirect
     type: select
